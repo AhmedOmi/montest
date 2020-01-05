@@ -1,30 +1,20 @@
 #include "monty.h"
 /**
-  *
-  *
-  */
-void push(int x)
+ * _push - adds a new node at the top.
+ * @stack: double pointer
+ * @n: const int
+ * Return: address or null
+ */
+stack_t *_push(stack_t **stack, const int n)
 {
-	stack_t *newNode, *holder;
+	stack_t *new = malloc(sizeof(stack_t));
 
-	holder = top;
-	newNode == malloc(sizeof(stack_t));
-	newNode->n = x;
-	if (newNode == NULL)
-		 perror("NULL");
-	if (holder == NULL)
-	{
-		newNode->next = NULL;
-		newNode ->prev = NULL;
-		top = newNode;
-	//	return (top);
-	}
-	else
-	{
-		holder->prev = newNode;
-		newNode->next = holder;
-		newNode->prev = NULL;
-		top = newNode;
-	//	return (top);
-	}
+	new->n = n;
+	new->next = (*stack);
+	new->prev = NULL;
+	if ((*stack) != NULL)
+		(*stack)->prev = new;
+	*stack = new;
+	return (*stack);
 }
+
