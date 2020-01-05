@@ -5,36 +5,44 @@
   */
 int main(int ac, char *argv[])
 {
-	//FILE *fp;
-	//int i;
-	stack_t *top = NULL;
+	FILE *fp;
+	unsigned int i, j;
+	char *opcode = NULL, *opcode_arg = NULL, *line = NULL, *token = NULL;
+	ssize_t read = 0;
+	size_t len = 0;
+
 	if (ac == 2)
 	{
-	/*	fp = fopen(argv[1], "r");
+		fp = fopen(argv[1], "r");
 		if (fp == NULL)
 		{
 			fprintf(stderr ,"Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
-		//still doing the getline or fgets part
-		for (i = 1; !feof; i++)
+		for (i = 1; (read = getline(&line, &len, fp)) != -1; i++)
 		{
+			token = strtok(line, " \n");
+			for (j = 0; token != NULL; j++)
+			{
+				if (j == 0)
+				{
+					opcode = strdup(token);
+					printf("opcode is %s\n", opcode);
+				}
+				if (j == 1)
+				{
+					opcode_arg = strdup(token);
+					printf("opcode_arg is %s\n", opcode_arg);
+				}
+				token = strtok(NULL, " \n");
+			}
 		}
 		fclose(fp);
-	*/
-		push(1);
-		push(2);
-		push(3);
-		while (top)
-		{
-			printf("%d", top->n);
-			top = top->next;
-		}
-		return (0);
 	}
 	else
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	return (0);
 }
