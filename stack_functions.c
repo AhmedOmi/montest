@@ -5,17 +5,26 @@
   */
 void push(int x)
 {
-	stack_t *newNode;
+	stack_t *newNode, *holder;
 
-	newNode = top;
+	holder = top;
+	newNode == malloc(sizeof(stack_t));
+	newNode->n = x;
 	if (newNode == NULL)
+		 perror("NULL");
+	if (holder == NULL)
 	{
-		newNode == malloc(sizeof(stack_t));
-		newNode->n = x;
 		newNode->next = NULL;
-		newNode ->prev =;
+		newNode ->prev = NULL;
+		top = newNode;
+	//	return (top);
 	}
 	else
 	{
+		holder->prev = newNode;
+		newNode->next = holder;
+		newNode->prev = NULL;
+		top = newNode;
+	//	return (top);
 	}
 }

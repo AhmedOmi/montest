@@ -5,12 +5,12 @@
   */
 int main(int ac, char *argv[])
 {
-	FILE *fp;
-	int i;
+	//FILE *fp;
+	//int i;
 	stack_t *top = NULL;
 	if (ac == 2)
 	{
-		fp = fopen(argv[1], "r");
+	/*	fp = fopen(argv[1], "r");
 		if (fp == NULL)
 		{
 			fprintf(stderr ,"Error: Can't open file %s\n", argv[1]);
@@ -21,6 +21,16 @@ int main(int ac, char *argv[])
 		{
 		}
 		fclose(fp);
+	*/
+		push(1);
+		push(2);
+		push(3);
+		while (top)
+		{
+			printf("%d", top->n);
+			top = top->next;
+		}
+		return (0);
 	}
 	else
 	{
